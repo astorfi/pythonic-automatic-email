@@ -79,6 +79,13 @@ The ``.csv`` file can contain multiple lines of different individuals of informa
               msg_reader.next()
               map(lambda x: sendmail(x), msg_reader)
 
+So for each individual email, we just change the name and sent it again. That's all. Seems super easy but the problem is easy when it is solved, right?
 
+
+==========
+Final Note
+==========
+
+Before using this codes, first just provide a simple ``.csv`` file or whatever file you want to parse, and use only your emails to make sure nothing is messed up. because the last thing you want is to send wrong emails to multiple people.
 
 
