@@ -135,8 +135,8 @@ def sendmail(attribute):
 
 
 def main():
-    with open("file.csv", "rb") as csvfile:
-        msg_reader = csv.reader(csvfile)
+    with open("file.csv", "rb") as file:
+        msg_reader = csv.reader(file)
         msg_reader.next()
         map(lambda x: sendmail(x), msg_reader)
 
