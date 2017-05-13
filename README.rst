@@ -26,10 +26,59 @@ Bigger picture
 
 At first time the python script opens a browser to take and store ``Gmail credentials`` locally. Then by using another script, the message creation will be performed. *We basically use the codes provided by google* except we customize few things to parse the ``.csv`` file and write the email format.
 
-=================
-Run the Gmail API
-=================
+=================================================
+Run the Gmail API, Installation and authorization
+=================================================
 
-At first, the ``Gmail API`` must be initialized. Please refer to `this link <PythonQuickstartGmailAPI_>`_.
+At first, the ``Gmail API`` must be initialized. Please refer to `this link <PythonQuickstartGmailAPI_>`_. After turning on the Gmail API, the ``Google Client Library`` must be installed by executing the following in the command line:
+
+.. code:: shell 
+     
+     pip install --upgrade google-api-python-client
+ 
+ After installation, the file ``code/quicksetup.py`` must be run for providing the credentials locally. Remember the file ``client_secret.json`` must be provided and it could be downloaded when the Gmail API is being turned.
 
 .. _PythonQuickstartGmailAPI: https://developers.google.com/gmail/api/quickstart/python
+
+=====================
+Send customized email
+=====================
+
+Now the interface is ready to go. Let's take a look and our main file ``code/sendmessage.py``. It is the code `at here <code_>`_ with some minor changes. We parse the ``.csv`` file and send customized emails.
+
+.. _code: http://stackoverflow.com/questions/37201250/sending-email-via-gmail-python
+
+Take a look at the context of the ``sample .csv file``:
+
+.. code:: shell 
+     
+     FirstName,LastName,EmailAddress,Company,Position
+     subject_name,subject_lastname,subject_email,X Corporation,Sr. Deep Learning,
+     
+The ``.csv`` file can contain multiple lines of different individuals of information. We parse it as follows:
+
+.. code:: python
+
+      def sendmail(attribute):
+          first_name = attribute[0]
+          last_name = attribute[1]
+          email = attribute[2]
+          print('Sending email to %s' % (str(email)))
+
+          to = email
+          sender = "you.email@gmail.com"
+          subject = "subject"
+          msgPlain = ""
+          msgHtml = "Hi "+ first_name +",<br/>This is a test email"
+          SendMessage(sender, to, subject, msgHtml, msgPlain)
+
+
+       def main():
+         with open("file.csv", "rb") as csvfile:
+              msg_reader = csv.reader(csvfile)
+              msg_reader.next()
+              map(lambda x: sendmail(x), msg_reader)
+
+
+
+
