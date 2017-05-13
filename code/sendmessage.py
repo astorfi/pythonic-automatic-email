@@ -127,7 +127,7 @@ def sendmail(attribute):
     print('Sending email to %s' % (str(email)))
 
     to = email
-    sender = "amirsina.torfi@gmail.com"
+    sender = "you.email"
     subject = "subject"
     msgPlain = ""
     msgHtml = "Hi "+ first_name +",<br/>This is a test email"
