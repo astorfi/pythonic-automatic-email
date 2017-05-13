@@ -5,6 +5,9 @@ Sending Multiple Customized Emails Uing Gmail API & Python
 
 This repository is dedicated to show how to use `Python Gmail API`_.
 
+.. image:: https://github.com/astorfi/Send-Multiple-Emails/blob/master/_img/source.gif
+      
+
 .. _Python Gmail API: https://developers.google.com/gmail/api/quickstart/python
 
 ==========
