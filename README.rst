@@ -38,8 +38,9 @@ At first, the ``Gmail API`` must be initialized. Please refer to `this link <Pyt
 .. code:: shell 
      
      pip install --upgrade google-api-python-client
- 
- After installation, the file ``code/quicksetup.py`` must be run for providing the credentials locally. Remember the file ``client_secret.json`` must be provided and it could be downloaded when the Gmail API is being turned.
+     
+
+After installation, the file ``code/quicksetup.py`` must be run for providing the credentials locally. Remember the file ``client_secret.json`` must be provided and it could be downloaded when the Gmail API is being turned.
 
 .. _PythonQuickstartGmailAPI: https://developers.google.com/gmail/api/quickstart/python
 
