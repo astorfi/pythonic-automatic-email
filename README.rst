@@ -5,6 +5,9 @@ Sending Multiple Customized Emails Uing Gmail API & Python
 
 This repository is dedicated to show how to use `Python Gmail API`_.
 
+.. image:: https://github.com/astorfi/Send-Multiple-Emails/blob/master/_img/source.gif
+      
+
 .. _Python Gmail API: https://developers.google.com/gmail/api/quickstart/python
 
 ==========
@@ -35,8 +38,9 @@ At first, the ``Gmail API`` must be initialized. Please refer to `this link <Pyt
 .. code:: shell 
      
      pip install --upgrade google-api-python-client
- 
- After installation, the file ``code/quicksetup.py`` must be run for providing the credentials locally. Remember the file ``client_secret.json`` must be provided and it could be downloaded when the Gmail API is being turned.
+     
+
+After installation, the file ``code/quicksetup.py`` must be run for providing the credentials locally. Remember the file ``client_secret.json`` must be provided and it could be downloaded when the Gmail API is being turned.
 
 .. _PythonQuickstartGmailAPI: https://developers.google.com/gmail/api/quickstart/python
 
@@ -74,8 +78,8 @@ The ``.csv`` file can contain multiple lines of different individuals of informa
 
 
        def main():
-         with open("file.csv", "rb") as csvfile:
-              msg_reader = csv.reader(csvfile)
+         with open("file.csv", "rb") as file:
+              msg_reader = csv.reader(file)
               msg_reader.next()
               map(lambda x: sendmail(x), msg_reader)
 
