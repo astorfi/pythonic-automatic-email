@@ -29,7 +29,7 @@ def get_credentials():
         flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
         flow.user_agent = APPLICATION_NAME
         credentials = tools.run_flow(flow, store)
-        print 'Storing credentials to ' + credential_path
+        print('Storing credentials to ' + credential_path)
     return credentials
 
 def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
@@ -46,10 +46,10 @@ def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
 def SendMessageInternal(service, user_id, message):
     try:
         message = (service.users().messages().send(userId=user_id, body=message).execute())
-        print 'Message Id: %s' % message['id']
+        print('Message Id: %s' % message['id'])
         return message
     except errors.HttpError, error:
-        print 'An error occurred: %s' % error
+        print('An error occurred: %s' % error)
         return "Error"
     return "OK"
 
@@ -91,29 +91,22 @@ def createMessageWithAttachment(
 
     message.attach(messageA)
 
-    print "create_message_with_attachment: file:", attachmentFile
+    print("create_message_with_attachment: file:", attachmentFile)
     content_type, encoding = mimetypes.guess_type(attachmentFile)
 
     if content_type is None or encoding is not None:
         content_type = 'application/octet-stream'
     main_type, sub_type = content_type.split('/', 1)
-    if main_type == 'text':
-        fp = open(attachmentFile, 'rb')
-        msg = MIMEText(fp.read(), _subtype=sub_type)
-        fp.close()
-    elif main_type == 'image':
-        fp = open(attachmentFile, 'rb')
-        msg = MIMEImage(fp.read(), _subtype=sub_type)
-        fp.close()
-    elif main_type == 'audio':
-        fp = open(attachmentFile, 'rb')
-        msg = MIMEAudio(fp.read(), _subtype=sub_type)
-        fp.close()
-    else:
-        fp = open(attachmentFile, 'rb')
-        msg = MIMEBase(main_type, sub_type)
-        msg.set_payload(fp.read())
-        fp.close()
+    with open(attachmentFile, 'rb') as fp:
+        if main_type == 'text':
+            msg = MIMEText(fp.read(), _subtype=sub_type)
+        elif main_type == 'image':
+            msg = MIMEImage(fp.read(), _subtype=sub_type)
+        elif main_type == 'audio':
+            msg = MIMEAudio(fp.read(), _subtype=sub_type)
+        else:
+            msg = MIMEBase(main_type, sub_type)
+            msg.set_payload(fp.read())
     filename = os.path.basename(attachmentFile)
     msg.add_header('Content-Disposition', 'attachment', filename=filename)
     message.attach(msg)
