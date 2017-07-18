@@ -19,8 +19,8 @@ Motivation
 
 There are couple of questions as motivate someone to use the python API for sending customized gmail.
 
-    * What if you one to send a fixed email to multiple people at once?
-    * What if you one to send multiple emails to a certain individual at once?
+    * What if you want to send a fixed email to multiple people at once?
+    * What if you want to send multiple emails to a certain individual at once?
     * What if you want to send multiple emails to multiple people?
     * What if you want to almost similar emails to multiple people with only changing the subject or greeting customized by their first name?
     
