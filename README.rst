@@ -70,13 +70,13 @@ The ``.csv`` file can contain multiple lines of different individuals of informa
           first_name = attribute[0]
           last_name = attribute[1]
           email = attribute[2]
-          print('Sending email to %s' % (str(email)))
+          print("Sending email to {}".format(email))
 
           to = email
           sender = "you.email@gmail.com"
           subject = "subject"
           msgPlain = ""
-          msgHtml = "Hi "+ first_name +",<br/>This is a test email"
+          msgHtml = "Hi {},<br/>This is a test email".format(first_name)
           SendMessage(sender, to, subject, msgHtml, msgPlain)
 
 
@@ -84,7 +84,7 @@ The ``.csv`` file can contain multiple lines of different individuals of informa
          with open("file.csv", "rb") as file:
               msg_reader = csv.reader(file)
               msg_reader.next()
-              map(lambda x: sendmail(x), msg_reader)
+              map(sendmail, msg_reader)
 
 So for each individual email, we just change the name and sent it again. That's all. Seems super easy but the problem is easy when it is solved, right?
 
