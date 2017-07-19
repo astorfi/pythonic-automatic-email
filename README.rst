@@ -1,6 +1,6 @@
 
 **********************************************************
-Sending Multiple Customized Emails Uing Gmail API & Python 
+Sending Multiple Customized Emails Using Gmail API & Python 
 **********************************************************
 
 This repository is dedicated to show:
